@@ -1,0 +1,39 @@
+//return the number of places two numbers have differing bits.
+
+class Solution {
+    private String number1;
+    private String number2;
+    private int difference = 0;
+    private int longer;
+    
+    public int hammingDistance(int x, int y) {
+        number1 = Integer.toBinaryString(x);
+        number2 = Integer.toBinaryString(y);
+        
+        boolean bigger = number1.length() > number2.length();
+        if (bigger) {
+            longer = number1.length();
+            number2 = makeEqual(number2);
+        } 
+        else {
+            longer = number2.length();
+            number1 = makeEqual(number1);
+        }
+        
+        for (int i = 0; i < longer; i++) {
+            if (number1.charAt(i) != number2.charAt(i)) {
+                difference++;
+            }
+        }
+        
+        return difference;
+    }
+    
+    public String makeEqual(String number) {
+        StringBuilder sb = new StringBuilder(number);
+        while (sb.length() < longer) {
+            sb.insert(0, "0");
+        }
+        return sb.toString();
+    }
+}
