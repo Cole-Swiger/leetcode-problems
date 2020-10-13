@@ -1,0 +1,28 @@
+//perform a riffle shuffle on an array.
+
+class Solution {
+    private int[] shuffled;
+    private int start1;
+    private int start2;
+    private boolean one = true;
+    
+    public int[] shuffle(int[] nums, int n) {
+        shuffled = new int[2*n];
+        start1 = 0;
+        start2 = n;
+        
+        for (int i = 0; i < shuffled.length; i ++) {
+            if (one) {
+                shuffled[i] = nums[start1];
+                start1++;
+                one = false;
+            }
+            else {
+                shuffled[i] = nums[start2];
+                start2++;
+                one = true;
+            }
+        }
+        return shuffled;
+    }
+}
