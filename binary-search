@@ -1,0 +1,36 @@
+//implement a binary search algorithm
+
+class Solution {
+    private int start = 0;
+    private int end;
+    private int mid;
+    private int answer = -1;
+    private boolean found = false;
+    
+    public int search(int[] nums, int target) {
+        if (target < nums[0] || target > nums[nums.length - 1]) {
+            return -1;
+        }
+        end = nums.length - 1;
+        mid = (start + end)/2;
+        
+        int checks = 0;
+        while (found == false && checks < nums.length) {
+            if (nums[mid] == target) {
+                answer = mid;
+                found = true;
+            }
+            else if (nums[mid] > target) {
+                end = mid;
+                mid = (start + end)/2;
+            }
+            else {
+                start = mid;
+                mid = (start + end)/2 + 1;
+            }
+            checks++;
+        }
+        
+        return answer;
+    }
+}
