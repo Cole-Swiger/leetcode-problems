@@ -1,0 +1,30 @@
+//given a number, I had to check if it was a power of 4 and return true or false.
+
+class Solution {
+    private boolean power;
+    private int number;
+    
+    public boolean isPowerOfFour(int num) {
+        number = num;
+        
+        divide(number);
+        return power;
+    }
+    
+    public void divide(int n) {
+        if (n == 1) {
+            power = true;
+            return;
+        }
+        
+        else if (n %4 != 0 || n <= 0) {
+            power = false;
+            return;
+        }
+              
+        else {
+            n = n/4;
+            divide(n);
+        }
+    }
+}
