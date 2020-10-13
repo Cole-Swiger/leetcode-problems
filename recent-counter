@@ -1,0 +1,32 @@
+import java.util.NavigableSet;
+import java.util.TreeSet;
+
+class RecentCounter {
+    private int time;
+    private int counter;
+    private NavigableSet<Integer> timeSet;
+    private static final int TIME_DIFFERENCE = 3000;
+    
+    public RecentCounter() {
+        time = 0;
+        counter = 0;
+        timeSet = new TreeSet<Integer>();
+    }
+    
+    public int ping(int t) {
+        time = t;
+        timeSet.add(time);
+        NavigableSet<Integer> recent = new TreeSet<Integer>();
+        recent = timeSet.subSet((time - TIME_DIFFERENCE), true, time, true);
+        counter = recent.size();
+        
+        return counter;
+    }
+}
+
+//The following comment cam from the leetcode question itself
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = new RecentCounter();
+ * int param_1 = obj.ping(t);
+ */
