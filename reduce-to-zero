@@ -1,0 +1,17 @@
+//reduce a number to 0 by dividing and subtracting.
+
+class Solution {
+    private int steps = 0;
+    public int numberOfSteps (int num) {
+       while (num > 0) {
+           if (num %2 == 0) {
+               num = num/2;
+           }
+           else {
+               num--;
+           }
+           steps++;
+       }
+        return steps;
+    }
+}
