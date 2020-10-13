@@ -1,0 +1,19 @@
+//The problem asked me to sum up all the numbers in a given array.
+
+class Solution {
+    private int sum = 0;
+    
+    public int[] runningSum(int[] nums) {
+        int[] sums = new int[nums.length];
+        
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j <= i; j++) {
+                sum += nums[j];
+            }
+            sums[i] = sum;
+            sum = 0;
+        }
+        
+        return sums;
+    }
+}
