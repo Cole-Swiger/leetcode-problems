@@ -1,0 +1,25 @@
+//given a number in base 10, I had to find it's complement
+
+class Solution {
+    private int complement;
+    private String binary;
+    
+    public int bitwiseComplement(int N) {
+        if (N == 0) return 1;             //0 is an edge case
+        
+        binary = Integer.toBinaryString(N);
+        StringBuilder sb = new StringBuilder(binary);
+        
+        for (int i = 0; i < binary.length(); i++) {
+            if (sb.charAt(i) == '0') {
+                sb.setCharAt(i, '1');
+            }
+            else {  // char == '1'
+                sb.setCharAt(i, '0');
+            }
+        }
+        binary = sb.toString();
+        complement = Integer.parseInt(binary, 2);
+        return complement;
+    }
+}
