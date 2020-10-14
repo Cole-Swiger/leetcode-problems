@@ -1,0 +1,28 @@
+class Solution {
+    private int total1 = 0;
+    private int total2 = 0;
+    
+    public int rob(int[] nums) {
+        int n = nums.length;
+        if (n == 1) return nums[0];
+        
+        total1 = robAttempt(nums, 0, n - 1);
+        total2 = robAttempt(nums, 1, n);
+        
+        return Math.max(total1, total2);
+    }
+    
+    public int robAttempt(int[] nums, int start, int end) {
+        int left = 0, right = 0;
+        
+        for (int i = start; i < end; i++) {
+            int temp = right;
+            
+            if (nums[i] + left > right) {
+                right = nums[i] + left;
+            }
+            left = temp;
+        }
+        return right;
+    }
+}
